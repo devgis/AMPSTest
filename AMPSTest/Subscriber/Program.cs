@@ -13,7 +13,7 @@ namespace Subscriber
         {
             ThreadPool.QueueUserWorkItem(o =>
             {
-                Client c = new Client("subscriber");
+                Client c = new Client(Guid.NewGuid().ToString());
 
                 // Connect and logon
                 c.connect("tcp://52.207.213.242:9007/amps/json");
