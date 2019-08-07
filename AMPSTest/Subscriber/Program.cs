@@ -1,4 +1,5 @@
 ﻿using AMPS.Client;
+using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Subscriber
                 Client c = new Client(Guid.NewGuid().ToString());
 
                 // Connect and logon
-                c.connect("tcp://52.207.213.242:9007/amps/json");
+                c.connect(ConstLib.servername);
                 c.logon();
 
                 Command cmd = new Command(Message.Commands.Subscribe).setTopic("test");

@@ -1,4 +1,5 @@
 ﻿using AMPS.Client;
+using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Publisher
                 Client c = new Client("publisher");
 
                 // Connect and logon
-                c.connect("tcp://52.207.213.242:9007/amps/json");
+                c.connect(ConstLib.servername);
                 c.logon();
 
                 int i = 0;
