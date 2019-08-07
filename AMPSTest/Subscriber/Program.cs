@@ -20,7 +20,7 @@ namespace Subscriber
                 c.connect(ConstLib.servername);
                 c.logon();
 
-                Command cmd = new Command(Message.Commands.Subscribe).setTopic("test");
+                Command cmd = new Command(Message.Commands.Subscribe).setTopic("test1");
                 var id = c.executeAsync(cmd, (message) => {
                     System.Console.WriteLine($"{DateTime.Now.ToString() }-Received message: {message.Data}");
                 });

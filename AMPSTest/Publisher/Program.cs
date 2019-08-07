@@ -25,8 +25,11 @@ namespace Publisher
                 while(true)
                 {
                     string data = "{ \"message\" : \"data" + (i++) + "!\" }";
-                    c.publish("test", data);
-                    Console.WriteLine($"{DateTime.Now.ToString() }-Received message: {data}");
+                    string data2 = "{ \"message\" : \"data" + Guid.NewGuid().ToString() + "!\" }";
+                    c.publish("test1", data);
+                    c.publish("test1", data2);
+                    Console.WriteLine($"{DateTime.Now.ToString() }-Published Topic:test1  message: {data}");
+                    Console.WriteLine($"{DateTime.Now.ToString() }-Published Topic:test2  message: {data2}");
                     Thread.Sleep(100) ;
                 }
                 
