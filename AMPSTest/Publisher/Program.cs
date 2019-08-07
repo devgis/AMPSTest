@@ -20,19 +20,17 @@ namespace Publisher
                 c.connect(ConstLib.servername);
                 c.logon();
 
-                int i = 0;
                 // Publish
                 while(true)
                 {
-                    string data = "{ \"message\" : \"data" + (i++) + "!\" }";
-                    string data2 = "{ \"message\" : \"data" + Guid.NewGuid().ToString() + "!\" }";
-                    c.publish("test1", data);
-                    c.publish("test1", data2);
-                    Console.WriteLine($"{DateTime.Now.ToString() }-Published Topic:test1  message: {data}");
-                    Console.WriteLine($"{DateTime.Now.ToString() }-Published Topic:test2  message: {data2}");
-                    Thread.Sleep(100) ;
+                    foreach(string topic in ConstLib.topics)
+                    {
+                        string data = "{ \"message\" : \"data" + Guid.NewGuid().ToString() + "!\" }";
+                        c.publish(topic, data);
+                        Console.WriteLine($"{DateTime.Now.ToString() }-Published Topic:{topic}  message: {data}");
+                        Thread.Sleep(200);
+                    }
                 }
-                
             });
             Console.Read();
         }
